@@ -40,11 +40,25 @@ public class ThreadGenerator implements Processor {
   // TODO manage post/thread/user relashionship
   private Thread generateThread() {
     User randomKnownUser = userGenerator.getRandomKnownUser();
+    String tag = "";;
+    switch((int)(Math.random() * 3 )){
+      case 0:
+        tag = "programmation";
+        break;
+      case 1:
+        tag = "mongo";
+        break;
+      default:
+        tag = "football";
+        break;
+    }
+
     if (randomKnownUser != null) {
       String idString = Long.toString(id.getAndIncrement());
       Thread newThread = Thread.builder()
               ._id(idString)
               .title(textGenerator.generateText(1))
+              .tag(tag)
               .build();
 
       knownThreads.put(idString, newThread);

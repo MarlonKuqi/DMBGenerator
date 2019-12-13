@@ -22,4 +22,6 @@ public class Thread {
   
   private final String title;
 
+  private final String tag;
+
 }
